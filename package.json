@@ -1,0 +1,25 @@
+{
+  "name": "jugaad-to-genesis",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "JUGAAD → SWARAJ → GENESIS V1.0 computational engineering laboratory",
+  "scripts": {
+    "test": "node tests/model.test.mjs && node --test tests/engine.test.mjs tests/domain-matrix.test.mjs tests/numerical-convergence.test.mjs tests/dependency-graph.test.mjs",
+    "test:generate": "node cli/generate-matrix.mjs",
+    "test:property": "node --test --test-name-pattern PROPERTY tests/domain-matrix.test.mjs",
+    "test:boundary": "node --test --test-name-pattern BOUNDARY tests/domain-matrix.test.mjs",
+    "test:numerical": "node --test tests/numerical-convergence.test.mjs",
+    "test:mutation": "node cli/mutate.mjs",
+    "test:coverage": "node --test --experimental-test-coverage tests/engine.test.mjs tests/domain-matrix.test.mjs tests/numerical-convergence.test.mjs tests/dependency-graph.test.mjs",
+    "verify": "node cli/verify.mjs",
+    "verify:full": "node cli/verify-full.mjs",
+    "analyze": "node cli/analyze.mjs",
+    "report": "node cli/report.mjs",
+    "sweep": "node cli/sweep.mjs",
+    "geometry": "node cli/geometry.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

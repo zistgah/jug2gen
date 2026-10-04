@@ -1,0 +1,163 @@
+[
+  [
+    "REQ-DYN-001",
+    "Gravity torque",
+    "M_GRAVITY_001",
+    "physics/mechanics.js",
+    "TEST-GRAVITY-001"
+  ],
+  [
+    "REQ-DYN-002",
+    "Rod inertia",
+    "M_INERTIA_001",
+    "physics/mechanics.js",
+    "TEST-INERTIA-001"
+  ],
+  [
+    "REQ-DYN-003",
+    "Inertial torque",
+    "M_INERTIAL_001",
+    "physics/mechanics.js",
+    "TEST-INERTIA-002"
+  ],
+  [
+    "REQ-DYN-004",
+    "Friction models",
+    "M_FRICTION_001",
+    "physics/mechanics.js",
+    "TEST-FRICTION-001"
+  ],
+  [
+    "REQ-DYN-005",
+    "Peak torque reference",
+    "M_DYN_002",
+    "physics/mechanics.js",
+    "TEST-ANALYTICAL-001"
+  ],
+  [
+    "REQ-DYN-006",
+    "Counterbalance",
+    "M_CB_001",
+    "physics/mechanics.js",
+    "TEST-CB-001"
+  ],
+  [
+    "REQ-ENE-001",
+    "Work and energy reduction",
+    "M_ENERGY_001",
+    "physics/mechanics.js",
+    "TEST-ENERGY-001"
+  ],
+  [
+    "REQ-SCALE-001",
+    "Similarity scaling",
+    "M_SCALE_001",
+    "physics/mechanics.js",
+    "TEST-SCALE-001"
+  ],
+  [
+    "REQ-PWR-001",
+    "Mechanical and electrical power",
+    "M_POWER_001",
+    "actuators/actuator.js",
+    "TEST-POWER-001"
+  ],
+  [
+    "REQ-TRN-001",
+    "Transmission ratio",
+    "M_TRANS_001",
+    "transmission/transmission.js",
+    "TEST-TRANS-001"
+  ],
+  [
+    "REQ-TRN-002",
+    "Chain tension",
+    "M_CHAIN_001",
+    "transmission/transmission.js",
+    "TEST-CHAIN-001"
+  ],
+  [
+    "REQ-STR-001",
+    "Bending stress",
+    "M_BEND_001",
+    "structures/structures.js",
+    "TEST-BEND-001"
+  ],
+  [
+    "REQ-STR-002",
+    "Deflection",
+    "M_DEFL_001",
+    "structures/structures.js",
+    "TEST-DEFL-001"
+  ],
+  [
+    "REQ-STR-003",
+    "Torsion and von Mises",
+    "M_VM_001",
+    "structures/structures.js",
+    "TEST-VM-001"
+  ],
+  [
+    "REQ-THM-001",
+    "Thermal steady and transient",
+    "M_THERM_002",
+    "thermal/lumped.js",
+    "TEST-THERM-001"
+  ],
+  [
+    "REQ-CST-001",
+    "Additive and parametric cost",
+    "M_COST_001",
+    "economics/cost.js",
+    "TEST-COST-001"
+  ],
+  [
+    "REQ-UNC-001",
+    "Uncertainty and sensitivity",
+    "M_UNCERTAINTY_001",
+    "math/numerics.js",
+    "TEST-UNC-001"
+  ],
+  [
+    "REQ-REG-001",
+    "Regime classification",
+    "M_PARITY_001",
+    "economics/cost.js",
+    "TEST-REGIME-001"
+  ],
+  [
+    "REQ-GEO-001",
+    "Geometry closure",
+    "M_MASS_002",
+    "geometry/closure.js",
+    "TEST-GEO-001"
+  ],
+  [
+    "REQ-MFG-001",
+    "Manufacturing feasibility",
+    "M_MASS_002",
+    "manufacturing/manufacturing.js",
+    "TEST-MFG-001"
+  ],
+  [
+    "REQ-PHY-001",
+    "PANINIphy adapter",
+    "—",
+    "panini/adapter.js",
+    "TEST-PANINI-001"
+  ],
+  [
+    "REQ-Q-001",
+    "PANINIq control boundary",
+    "—",
+    "panini/adapter.js",
+    "TEST-PANINI-002"
+  ],
+  [
+    "REQ-EXP-001",
+    "Experiment schema and calibration",
+    "—",
+    "experiments/experiments.js",
+    "TEST-CAL-001"
+  ]
+]

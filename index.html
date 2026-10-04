@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jugaad to Genesis · Parametric laboratory</title>
+  <meta name="description" content="Parametric simulation and exchange laboratory for the Jugaad-to-Genesis mechanical model. Illustrative costs, torque scaling, capability field, and CAD/CNC/print export.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Outfit:wght@360;500&family=Syne:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <div class="app">
+    <header class="top">
+      <div class="brand">
+        <div class="mark">J2G</div>
+        <div>
+          <h1>Jugaad <span>→</span> Genesis</h1>
+          <p>Parametric programme · node, foundry, winding, compute, guild, sovereignty</p>
+        </div>
+      </div>
+      <p class="classify">1.2 kg, 150 kg, ₹4,000, and the cost curve are manufacturing heuristics (Cat 4/6), not measured constants. Physics is continuous. Workshop infrastructure is not.</p>
+    </header>
+    <nav class="nav">
+      <button type="button" class="on" data-panel="node">Node</button>
+      <button type="button" data-panel="landscape">Landscape</button>
+      <button type="button" data-panel="torque">Torque</button>
+      <button type="button" data-panel="workflow">Workflow</button>
+      <button type="button" data-panel="capability">Capability</button>
+      <button type="button" data-panel="regimes">Regimes</button>
+      <button type="button" data-panel="workshop">Workshop</button>
+      <button type="button" data-panel="exchange">Exchange</button>
+      <button type="button" data-panel="foundry">Foundry</button>
+      <button type="button" data-panel="winding">Winding</button>
+      <button type="button" data-panel="compute">Compute</button>
+      <button type="button" data-panel="guild">Guild</button>
+      <button type="button" data-panel="sovereign">Sovereignty</button>
+      <button type="button" data-panel="ray">Ray-Man</button>
+      <button type="button" data-panel="evidence">Evidence</button>
+      <button type="button" data-panel="notes">Notes</button>
+    </nav>
+    <main class="stage">
+      <section class="panel on" id="node">
+        <div class="layout">
+          <aside class="card">
+            <h2>Presets</h2>
+            <div class="presets" id="presets"></div>
+            <div class="sliders">
+              <label>Length <b id="LLabel">1.00 m</b><input id="L" type="range" min="0.08" max="5" step="0.01" value="1"></label>
+              <label>Mass <b id="mLabel">50 kg</b><input id="m" type="range" min="0.2" max="600" step="0.1" value="50"></label>
+              <label class="check"><input id="couple" type="checkbox"> Couple mass to L³</label>
+              <label>Density <b>kg/m³</b><input id="density" type="range" min="800" max="8000" step="50" value="7850"></label>
+              <label>Angular accel <b>rad/s²</b><input id="alpha" type="range" min="0.1" max="12" step="0.1" value="1.2"></label>
+              <label>Precision P <b>µm</b><input id="P" type="range" min="10" max="5000" step="10" value="1000"></label>
+              <label>Voltage <b>V</b><input id="V" type="range" min="5" max="400" step="1" value="12"></label>
+              <label>Efficiency <b>η</b><input id="eta" type="range" min="0.3" max="0.92" step="0.01" value="0.7"></label>
+              <label>Counterbalance <b id="cbLabel">85%</b><input id="cb" type="range" min="0" max="1" step="0.01" value="0.85"></label>
+              <label>Skill tier <b>1–4</b><input id="skill" type="range" min="1" max="4" step="1" value="2"></label>
+              <label>Compute tier <b>1–4</b><input id="compute" type="range" min="1" max="4" step="1" value="2"></label>
+            </div>
+          </aside>
+          <div class="card viewport">
+            <canvas id="view"></canvas>
+            <p id="viewFallback" hidden></p>
+            <div class="hud">
+              <b id="regimeChip" class="chip" data-regime="swaraj">Swaraj zone</b>
+              <b>orbit to inspect</b>
+            </div>
+          </div>
+          <aside class="card">
+            <h2>Live state</h2>
+            <div class="metrics">
+              <article><span>τ peak</span><strong id="tauBig">—</strong></article>
+              <article><span>₹/kg</span><strong id="costBig">—</strong></article>
+              <article><span>strut save</span><strong id="saveBig">—</strong></article>
+            </div>
+            <div id="regimeName" style="font-family:Syne,sans-serif;font-size:22px"></div>
+            <p class="note" id="regimeDetail"></p>
+            <div class="readout" id="readout"></div>
+            <p class="note" id="closure"></p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="panel" id="landscape">
+        <div class="charts">
+          <div class="card">
+            <h2>Specific cost landscape</h2>
+            <canvas class="chart" id="chartCost"></canvas>
+            <p class="note">Left kink: precision wall, cost per kilogram rises as tolerances decouple from mass. Centre trough: scrap parity. Right kink: crane wall, infrastructure steps up. Marker is the current node.</p>
+          </div>
+          <div class="card">
+            <h2>Shop profile</h2>
+            <canvas id="sheet"></canvas>
+            <p class="note" id="scaleNote"></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="torque">
+        <div class="charts">
+          <div class="card">
+            <h2>τ(θ) = Iθ̈ + mgL cos θ − τ<sub>cb</sub> + bθ̇</h2>
+            <canvas class="chart" id="chartTorque"></canvas>
+            <p class="note">Green is motor torque after passive cancellation of a fraction of the gravity term. The 70% figure in earlier notes is a target, not a result — this chart computes the sample lift.</p>
+          </div>
+          <div class="card">
+            <h2>Actuator discontinuity</h2>
+            <canvas class="chart" id="chartScale"></canvas>
+            <p class="note">Reference points from the parametric table: 0.5, 5, 50, 150, 500 kg. Torque is recomputed from the joint equation, not copied as a specification.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="workflow">
+        <div class="card">
+          <h2>Mechanical workflow</h2>
+          <div class="row">
+            <label class="check">Actuator
+              <select id="actuator">
+                <option value="wiper">Wiper</option>
+                <option value="starter">Starter</option>
+                <option value="window">Window lift</option>
+                <option value="rickshaw">E-rickshaw BLDC</option>
+              </select>
+            </label>
+            <label>Misalign mm <b id="misLabel">0.6</b><input id="misalign" type="range" min="0" max="4" step="0.1" value="0.6"></label>
+            <label>Shock k <b id="skLabel">40</b><input id="shockK" type="range" min="0" max="200" step="1" value="40"></label>
+            <label>Lifter c <b id="lcLabel">6</b><input id="lifterC" type="range" min="0" max="40" step="0.5" value="6"></label>
+            <button type="button" class="ghost" id="runSim">Run all simulations</button>
+          </div>
+          <p class="note" id="simStatus">Models are Cat 4/5 estimates. Run integrates the joint, structure screen, chain, foundry fill, winding curve, CAM/print, two-link arm, and Ray-Man regimes.</p>
+        </div>
+        <div class="charts">
+          <div class="card"><h2>Joint dynamics</h2><canvas class="chart" id="chartJoint"></canvas><div class="readout" id="jointOut"></div></div>
+          <div class="card"><h2>Structure screen</h2><canvas class="chart" id="chartStruct"></canvas><div class="readout" id="structOut"></div></div>
+          <div class="card"><h2>Winding torque-speed</h2><canvas class="chart" id="chartWind"></canvas><div class="readout" id="windSimOut"></div></div>
+          <div class="card"><h2>Foundry and CAM</h2><canvas class="chart" id="chartCam"></canvas><div class="readout" id="camOut"></div></div>
+          <div class="card"><h2>Two-link arm</h2><canvas class="chart" id="chartArm"></canvas></div>
+          <div class="card"><h2>Ray-Man regimes</h2><canvas class="chart" id="chartRaySim"></canvas><div class="readout" id="raySimOut"></div></div>
+        </div>
+      </section>
+
+      <section class="panel" id="capability">
+        <div class="split">
+          <div class="card">
+            <h2>C = [M F A S K E W V H O]</h2>
+            <canvas class="chart" id="chartRadar"></canvas>
+            <p class="note">Amber is this node. Coral is a Jugaad reference polygon. Sage is a Swaraj reference. Stages are regions, not a staircase — compute tier can sit ahead of fabrication.</p>
+          </div>
+          <div class="card">
+            <h2>How to read it</h2>
+            <p>Jugaad: can we make it work?</p>
+            <p>Swaraj: can we make it again?</p>
+            <p>Genesis: can we make the means by which we make it?</p>
+            <p class="note">Skill tier and compute tier move human and cognitive axes without pretending the steel got better. Organisation stays a workshop score until federation is modelled explicitly.</p>
+            <p class="note">Reference polygons are scaffolds for the laboratory, not measured audits of a guild.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="regimes">
+        <div class="bands" id="regimes"></div>
+        <p class="note">Bands follow the supplied mass-regime table. Crossing 150 kg is a handling and power step, not a discontinuity in the square-cube law itself.</p>
+      </section>
+
+      <section class="panel" id="workshop">
+        <div class="card">
+          <h2>Illustrative ₹4,000 node</h2>
+          <p class="note">1–2 DOF utility actuator: feeder, tracker, gantry drive, manipulator link. Not a humanoid. Labour is sweat equity unless priced.</p>
+          <label class="check"><input id="labour" type="checkbox"> Price fabrication labour at a market day rate</label>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Category</th><th>Component</th><th>Source</th><th>Path</th><th>INR</th></tr></thead>
+              <tbody id="bomBody"></tbody>
+            </table>
+          </div>
+          <div class="totals">
+            <span>Parts <b id="bomParts"></b></span>
+            <span>Labour <b id="bomLabour"></b></span>
+            <strong id="bomTotal"></strong>
+          </div>
+          <p class="note" id="bomDelta"></p>
+        </div>
+      </section>
+
+      <section class="panel" id="exchange">
+        <div class="card">
+          <h2>Import and export</h2>
+          <p class="note">The solid is the same parametric link shown in the viewport: flange, pivot, beam, pad, motor can. Units are millimetres. G-code is an illustrative GRBL contour, not a verified post.</p>
+          <div class="exports" id="exports">
+            <button type="button" data-export="stl">STL</button>
+            <button type="button" data-export="3mf">3MF</button>
+            <button type="button" data-export="obj">OBJ</button>
+            <button type="button" data-export="scad">OpenSCAD</button>
+            <button type="button" data-export="dxf">DXF</button>
+            <button type="button" data-export="svg">SVG</button>
+            <button type="button" data-export="gcode">G-code</button>
+            <button type="button" data-export="step">STEP</button>
+            <button type="button" data-export="json">JSON spec</button>
+            <button type="button" data-export="csv">CSV BOM</button>
+            <button type="button" data-export="md">Analysis note</button>
+            <button type="button" data-export="programme">Programme note</button>
+          </div>
+          <div class="guide" id="guide"></div>
+          <div class="drop" id="drop">
+            Drop STL, OBJ, or J2G JSON
+            <div class="row" style="justify-content:center;margin-top:10px">
+              <input id="file" type="file" accept=".stl,.obj,.json,.STL,.OBJ,.JSON">
+              <button type="button" class="ghost" id="clearImport">Clear import preview</button>
+            </div>
+            <p id="importStatus">Nothing imported.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="foundry">
+        <div class="split">
+          <div class="card">
+            <h2>Foundry-in-a-Box</h2>
+            <label class="check">Alloy
+              <select id="alloy">
+                <option value="aluminium">Aluminium</option>
+                <option value="brass">Brass</option>
+                <option value="bronze">Bronze</option>
+                <option value="steel">Mild steel</option>
+                <option value="ti64">Ti-6Al-4V</option>
+              </select>
+            </label>
+            <label>Charge mass kg <b id="chargeLabel">8</b><input id="charge" type="range" min="0.5" max="40" step="0.5" value="8"></label>
+            <label>Furnace efficiency <b id="etaFLabel">0.25</b><input id="etaF" type="range" min="0.08" max="0.6" step="0.01" value="0.25"></label>
+            <div class="readout" id="foundryOut"></div>
+            <p class="note">Waste-oil and small induction sets are the proposed aluminium and brass path. Steel and titanium are refused by the model. Energy is m(cΔT + latent) / η.</p>
+          </div>
+          <div class="card">
+            <h2>Cast versus machine</h2>
+            <div id="castTable"></div>
+            <p class="note">Transition criterion: a repeated alloy, a mould a second person can ram, and a witness coupon with a measured dimension.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="winding">
+        <div class="split">
+          <div class="card">
+            <h2>Hand-wound stator</h2>
+            <label>Slots <b id="slotsLabel">12</b><input id="slots" type="range" min="6" max="24" step="1" value="12"></label>
+            <label>Turns per coil <b id="turnsLabel">40</b><input id="turns" type="range" min="8" max="120" step="1" value="40"></label>
+            <label>AWG <b id="awgLabel">18</b><input id="awg" type="range" min="16" max="22" step="2" value="18"></label>
+            <label>Current A <b id="ampLabel">8</b><input id="amps" type="range" min="1" max="30" step="0.5" value="8"></label>
+            <div class="readout" id="windOut"></div>
+          </div>
+          <div class="card">
+            <h2>QA minimum</h2>
+            <p>Resistance, inductance if a meter exists, no-load current, direction, timed temperature rise.</p>
+            <p class="note">Virgin copper is the conductivity constraint. Contaminated recyclate raises I²R and cuts MMF. NdFeB stays a reserve or is designed out with an SRM.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="compute">
+        <div class="split">
+          <div class="card">
+            <h2>Relay → MCU → RISC-V → PEDLER</h2>
+            <div id="stack"></div>
+            <p class="note" id="conventional"></p>
+          </div>
+          <div class="card">
+            <h2>Same tree, other script</h2>
+            <label class="check">Surface
+              <select id="script"></select>
+            </label>
+            <pre id="scriptOut" class="code"></pre>
+            <p class="note">Orthography is not semantics. This is a projection demo, not a compiler.</p>
+            <div id="ternary"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="guild">
+        <div class="card">
+          <h2>Four tiers</h2>
+          <div class="table-wrap" id="tiers"></div>
+          <p class="note">Proposed rule: advancement by a checked artefact. Welding, winding, sand, and troubleshooting are apprenticeship skills. Nonlinear control, device layout, and structural analysis remain theory-heavy.</p>
+        </div>
+      </section>
+
+      <section class="panel" id="sovereign">
+        <div class="split">
+          <div class="card">
+            <h2>Closure checklist</h2>
+            <div id="checks"></div>
+            <p id="closureStage" class="note"></p>
+          </div>
+          <div class="card">
+            <h2>Deterrent lists</h2>
+            <div id="lists"></div>
+            <label>Materials step <b id="pathLabel">0</b><input id="path" type="range" min="0" max="3" step="1" value="1"></label>
+            <p class="note" id="pathOut"></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="ray">
+        <div class="split">
+          <div class="card">
+            <h2>Flying Ray-Man</h2>
+            <div class="readout" id="rayOut"></div>
+            <p class="note">Separate programme. 85 kg is inside the handling trough and outside it for composite certification and vacuum titanium.</p>
+          </div>
+          <div class="card viewport short">
+            <canvas id="rayView"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="evidence">
+        <div class="card">
+          <h2>Register</h2>
+          <div class="table-wrap" id="evidence"></div>
+        </div>
+      </section>
+
+      <section class="panel" id="notes">
+        <div class="split">
+          <div class="card">
+            <h2>Curated notes</h2>
+            <div class="presets" id="docList"></div>
+          </div>
+          <article class="card prose" id="doc"></article>
+        </div>
+      </section>
+    </main>
+    <footer class="foot">
+      <span>Open laboratory · GitHub Pages static build · <span id="year"></span></span>
+      <span>Sovereignty here means substitution capability, not autarky.</span>
+    </footer>
+  </div>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

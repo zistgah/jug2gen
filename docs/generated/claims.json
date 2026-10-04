@@ -1,0 +1,72 @@
+[
+  {
+    "id": "TORQUE.GRAVITY",
+    "evidence": "C3",
+    "implementation": "S5",
+    "physicalValidation": "S0",
+    "text": "τ_g = m g L_cg for the canonical node."
+  },
+  {
+    "id": "TORQUE.PEAK",
+    "evidence": "C3",
+    "implementation": "S5",
+    "physicalValidation": "S0",
+    "text": "Uniform-rod peak torque is an analytical model result, not a measurement."
+  },
+  {
+    "id": "ENERGY.REDUCTION.70",
+    "evidence": "C5",
+    "implementation": "S1",
+    "physicalValidation": "S0",
+    "text": "70% energy reduction is a project target, not a fact."
+  },
+  {
+    "id": "REGIME.BOUNDARIES",
+    "evidence": "C6",
+    "implementation": "S4",
+    "physicalValidation": "S0",
+    "text": "1.2/10/150/500 kg boundaries are configurable hypotheses."
+  },
+  {
+    "id": "FRICTION.004",
+    "evidence": "C6",
+    "implementation": "S4",
+    "physicalValidation": "S0",
+    "text": "k_f = 0.04 is an illustrative selectable assumption."
+  },
+  {
+    "id": "POSTER.612",
+    "evidence": "C6",
+    "implementation": "S0",
+    "physicalValidation": "S0",
+    "text": "612 N·m is not reproduced by the canonical equation and is not an engineering result."
+  },
+  {
+    "id": "PARITY.LIMIT",
+    "evidence": "C5",
+    "implementation": "S3",
+    "physicalValidation": "S0",
+    "text": "Material parity is a limiting model, not present machine cost."
+  },
+  {
+    "id": "SOVEREIGNTY.72H",
+    "evidence": "C5",
+    "implementation": "S3",
+    "physicalValidation": "S0",
+    "text": "72 h reproduction is a strategic criterion, not a law."
+  },
+  {
+    "id": "GENESIS.CNC",
+    "evidence": "C3",
+    "implementation": "S3",
+    "physicalValidation": "S0",
+    "text": "Having a CNC is not Genesis."
+  },
+  {
+    "id": "PANINI.REALIZATION",
+    "evidence": "C4",
+    "implementation": "S3",
+    "physicalValidation": "S0",
+    "text": "PANINIphy IR and PANINIq tokens are adapter boundaries, not physical realization."
+  }
+]

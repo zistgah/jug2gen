@@ -1,0 +1,773 @@
+{
+  "seed": 20261004,
+  "casesPerProperty": 1000,
+  "generatedAt": "2026-10-04T11:11:21.819Z",
+  "rows": [
+    {
+      "id": "M_GRAVITY_001::REFERENCE",
+      "equation": "M_GRAVITY_001",
+      "kind": "reference",
+      "oracle": "m*g*Lcg",
+      "cases": 1
+    },
+    {
+      "id": "M_GRAVITY_001::BOUNDARY::LOWER",
+      "equation": "M_GRAVITY_001",
+      "kind": "boundary",
+      "rule": {
+        "mass0": "tau=0",
+        "Lcg0": "tau=0",
+        "negativeMass": "FAIL",
+        "negativeLength": "FAIL"
+      },
+      "cases": 1
+    },
+    {
+      "id": "M_GRAVITY_001::BOUNDARY::BELOW",
+      "equation": "M_GRAVITY_001",
+      "kind": "failure",
+      "cases": 1
+    },
+    {
+      "id": "M_GRAVITY_001::BOUNDARY::ABOVE",
+      "equation": "M_GRAVITY_001",
+      "kind": "failure",
+      "cases": 1
+    },
+    {
+      "id": "M_GRAVITY_001::PROPERTY",
+      "equation": "M_GRAVITY_001",
+      "kind": "property",
+      "seed": 20261004,
+      "cases": 1000
+    },
+    {
+      "id": "M_GRAVITY_001::NUMERICAL",
+      "equation": "M_GRAVITY_001",
+      "kind": "numerical",
+      "cases": 6
+    },
+    {
+      "id": "M_INERTIA_001::REFERENCE",
+      "equation": "M_INERTIA_001",
+      "kind": "reference",
+      "oracle": "(1/3)*m*L*L",
+      "cases": 1
+    },
+    {
+      "id": "M_INERTIA_001::BOUNDARY::LOWER",
+      "equation": "M_INERTIA_001",
+      "kind": "boundary",
+      "rule": {
+        "mass0": "I=0",
+        "length0": "FAIL",
+        "negativeMass": "FAIL"
+      },
+      "cases": 1
+    },
+    {
+      "id": "M_INERTIA_001::BOUNDARY::BELOW",
+      "equation": "M_INERTIA_001",
+      "kind": "failure",
+      "cases": 1
+    },
+    {
+      "id": "M_INERTIA_001::BOUNDARY::ABOVE",
+      "equation": "M_INERTIA_001",
+      "kind": "failure",
+      "cases": 1
+    },
+    {
+      "id": "M_INERTIA_001::PROPERTY",
+      "equation": "M_INERTIA_001",
+      "kind": "property",
+      "seed": 20261004,
+      "cases": 1000
+    },
+    {
+      "id": "M_INERTIA_001::NUMERICAL",
+      "equation": "M_INERTIA_001",
+      "kind": "numerical",
+      "cases": 6
+    },
+    {
+      "id": "M_INERTIAL_001::REFERENCE",
+      "equation": "M_INERTIAL_001",
+      "kind": "reference",
+      "oracle": "I*alpha",
+      "cases": 1
+    },
+    {
+      "id": "M_INERTIAL_001::BOUNDARY::LOWER",
+      "equation": "M_INERTIAL_001",
+      "kind": "boundary",
+      "rule": {
+        "alpha0": "tau=0",
+        "negativeInertia": "FAIL"
+      },
+      "cases": 1
+    },
+    {
+      "id": "M_INERTIAL_001::BOUNDARY::BELOW",
+      "equation": "M_INERTIAL_001",
+      "kind": "failure",
+      "cases": 1
+    },
+    {
+      "id": "M_INERTIAL_001::BOUNDARY::ABOVE",
+      "equation": "M_INERTIAL_001",
+      "kind": "failure",
+      "cases": 1
+    },
+    {
+      "id": "M_INERTIAL_001::PROPERTY",
+      "equation": "M_INERTIAL_001",
+      "kind": "property",
+      "seed": 20261004,
+      "cases": 1000
+    },
+    {
+      "id": "M_INERTIAL_001::NUMERICAL",
+      "equation": "M_INERTIAL_001",
+      "kind": "numerical",
+      "cases": 6
+    },
+    {
+      "id": "M_FRICTION_002::REFERENCE",
+      "equation": "M_FRICTION_002",
+      "kind": "reference",
+      "oracle": "kF*(tauG+tauI)",
+      "cases": 1
+    },
+    {
+      "id": "M_FRICTION_002::BOUNDARY::LOWER",
+      "equation": "M_FRICTION_002",
+      "kind": "boundary",
+      "rule": {
+        "kF0": "tau=0",
+        "negativeKF": "FAIL"
+      },
+      "cases": 1
+    },
+    {
+      "id": "M_FRICTION_002::BOUNDARY::BELOW",
+      "equation": "M_FRICTION_002",
+      "kind": "failure",
+      "cases": 1
+    },
+    {
+      "id": "M_FRICTION_002::BOUNDARY::ABOVE",
+      "equation": "M_FRICTION_002",
+      "kind": "failure",
+      "cases": 1
+    },
+    {
+      "id": "M_FRICTION_002::PROPERTY",
+      "equation": "M_FRICTION_002",
+      "kind": "property",
+      "seed": 20261004,
+      "cases": 1000
+    },
+    {
+      "id": "M_FRICTION_002::NUMERICAL",
+      "equation": "M_FRICTION_002",
+      "kind": "numerical",
+      "cases": 6
+    },
+    {
+      "id": "M_DYN_002::REFERENCE",
+      "equation": "M_DYN_002",
+      "kind": "reference",
+      "oracle": "tauG+tauI+kF*(tauG+tauI)",
+      "cases": 1
+    },
+    {
+      "id": "M_DYN_002::BOUNDARY::LOWER",
+      "equation": "M_DYN_002",
+      "kind": "boundary",
+      "rule": {
+        "reference": "272.306233333333 N*m"
+      },
+      "cases": 1
+    },
+    {
+      "id": "M_DYN_002::BOUNDARY::BELOW",
+      "equation": "M_DYN_002",
+      "kind": "failure",
+      "cases": 1
+    },
+    {
+      "id": "M_DYN_002::BOUNDARY::ABOVE",
+      "equation": "M_DYN_002",
+      "kind": "failure",
+      "cases": 1
+    },
+    {
+      "id": "M_DYN_002::PROPERTY",
+      "equation": "M_DYN_002",
+      "kind": "property",
+      "seed": 20261004,
+      "cases": 1000
+    },
+    {
+      "id": "M_DYN_002::NUMERICAL",
+      "equation": "M_DYN_002",
+      "kind": "numerical",
+      "cases": 6
+    },
+    {
+      "id": "M_POWER_001::REFERENCE",
+      "equation": "M_POWER_001",
+      "kind": "reference",
+      "oracle": "tau*omega",
+      "cases": 1
+    },
+    {
+      "id": "M_POWER_001::BOUNDARY::LOWER",
+      "equation": "M_POWER_001",
+      "kind": "boundary",
+      "rule": {
+        "tau0": "P=0",
+        "omega0": "P=0"
+      },
+      "cases": 1
+    },
+    {
+      "id": "M_POWER_001::BOUNDARY::BELOW",
+      "equation": "M_POWER_001",
+      "kind": "failure",
+      "cases": 1
+    },
+    {
+      "id": "M_POWER_001::BOUNDARY::ABOVE",
+      "equation": "M_POWER_001",
+      "kind": "failure",
+      "cases": 1
+    },
+    {
+      "id": "M_POWER_001::PROPERTY",
+      "equation": "M_POWER_001",
+      "kind": "property",
+      "seed": 20261004,
+      "cases": 1000
+    },
+    {
+      "id": "M_POWER_001::NUMERICAL",
+      "equation": "M_POWER_001",
+      "kind": "numerical",
+      "cases": 6
+    },
+    {
+      "id": "M_POWER_002::REFERENCE",
+      "equation": "M_POWER_002",
+      "kind": "reference",
+      "oracle": "Pmech/eta",
+      "cases": 1
+    },
+    {
+      "id": "M_POWER_002::BOUNDARY::LOWER",
+      "equation": "M_POWER_002",
+      "kind": "boundary",
+      "rule": {
+        "eta0": "FAIL",
+        "eta1": "PASS",
+        "etaAbove1": "FAIL"
+      },
+      "cases": 1
+    },
+    {
+      "id": "M_POWER_002::BOUNDARY::BELOW",
+      "equation": "M_POWER_002",
+      "kind": "failure",
+      "cases": 1
+    },
+    {
+      "id": "M_POWER_002::BOUNDARY::ABOVE",
+      "equation": "M_POWER_002",
+      "kind": "failure",
+      "cases": 1
+    },
+    {
+      "id": "M_POWER_002::PROPERTY",
+      "equation": "M_POWER_002",
+      "kind": "property",
+      "seed": 20261004,
+      "cases": 1000
+    },
+    {
+      "id": "M_POWER_002::NUMERICAL",
+      "equation": "M_POWER_002",
+      "kind": "numerical",
+      "cases": 6
+    },
+    {
+      "id": "M_TRANS_001::REFERENCE",
+      "equation": "M_TRANS_001",
+      "kind": "reference",
+      "oracle": "Nout/Nin",
+      "cases": 1
+    },
+    {
+      "id": "M_TRANS_001::BOUNDARY::LOWER",
+      "equation": "M_TRANS_001",
+      "kind": "boundary",
+      "rule": {
+        "R1": "omega unchanged",
+        "Rdouble": "omega halves, tau doubles at eta=1"
+      },
+      "cases": 1
+    },
+    {
+      "id": "M_TRANS_001::BOUNDARY::BELOW",
+      "equation": "M_TRANS_001",
+      "kind": "failure",
+      "cases": 1
+    },
+    {
+      "id": "M_TRANS_001::BOUNDARY::ABOVE",
+      "equation": "M_TRANS_001",
+      "kind": "failure",
+      "cases": 1
+    },
+    {
+      "id": "M_TRANS_001::PROPERTY",
+      "equation": "M_TRANS_001",
+      "kind": "property",
+      "seed": 20261004,
+      "cases": 1000
+    },
+    {
+      "id": "M_TRANS_001::NUMERICAL",
+      "equation": "M_TRANS_001",
+      "kind": "numerical",
+      "cases": 6
+    },
+    {
+      "id": "M_CHAIN_001::REFERENCE",
+      "equation": "M_CHAIN_001",
+      "kind": "reference",
+      "oracle": "tau/r",
+      "cases": 1
+    },
+    {
+      "id": "M_CHAIN_001::BOUNDARY::LOWER",
+      "equation": "M_CHAIN_001",
+      "kind": "boundary",
+      "rule": {
+        "radius0": "FAIL"
+      },
+      "cases": 1
+    },
+    {
+      "id": "M_CHAIN_001::BOUNDARY::BELOW",
+      "equation": "M_CHAIN_001",
+      "kind": "failure",
+      "cases": 1
+    },
+    {
+      "id": "M_CHAIN_001::BOUNDARY::ABOVE",
+      "equation": "M_CHAIN_001",
+      "kind": "failure",
+      "cases": 1
+    },
+    {
+      "id": "M_CHAIN_001::PROPERTY",
+      "equation": "M_CHAIN_001",
+      "kind": "property",
+      "seed": 20261004,
+      "cases": 1000
+    },
+    {
+      "id": "M_CHAIN_001::NUMERICAL",
+      "equation": "M_CHAIN_001",
+      "kind": "numerical",
+      "cases": 6
+    },
+    {
+      "id": "M_DEFL_001::REFERENCE",
+      "equation": "M_DEFL_001",
+      "kind": "reference",
+      "oracle": "F*L^3/(3*E*I)",
+      "cases": 1
+    },
+    {
+      "id": "M_DEFL_001::BOUNDARY::LOWER",
+      "equation": "M_DEFL_001",
+      "kind": "boundary",
+      "rule": {
+        "loadCase": "end point load only"
+      },
+      "cases": 1
+    },
+    {
+      "id": "M_DEFL_001::BOUNDARY::BELOW",
+      "equation": "M_DEFL_001",
+      "kind": "failure",
+      "cases": 1
+    },
+    {
+      "id": "M_DEFL_001::BOUNDARY::ABOVE",
+      "equation": "M_DEFL_001",
+      "kind": "failure",
+      "cases": 1
+    },
+    {
+      "id": "M_DEFL_001::PROPERTY",
+      "equation": "M_DEFL_001",
+      "kind": "property",
+      "seed": 20261004,
+      "cases": 1000
+    },
+    {
+      "id": "M_DEFL_001::NUMERICAL",
+      "equation": "M_DEFL_001",
+      "kind": "numerical",
+      "cases": 6
+    },
+    {
+      "id": "M_DEFL_002::REFERENCE",
+      "equation": "M_DEFL_002",
+      "kind": "reference",
+      "oracle": "w*L^4/(8*E*I)",
+      "cases": 1
+    },
+    {
+      "id": "M_DEFL_002::BOUNDARY::LOWER",
+      "equation": "M_DEFL_002",
+      "kind": "boundary",
+      "rule": {
+        "loadCase": "uniform load only"
+      },
+      "cases": 1
+    },
+    {
+      "id": "M_DEFL_002::BOUNDARY::BELOW",
+      "equation": "M_DEFL_002",
+      "kind": "failure",
+      "cases": 1
+    },
+    {
+      "id": "M_DEFL_002::BOUNDARY::ABOVE",
+      "equation": "M_DEFL_002",
+      "kind": "failure",
+      "cases": 1
+    },
+    {
+      "id": "M_DEFL_002::PROPERTY",
+      "equation": "M_DEFL_002",
+      "kind": "property",
+      "seed": 20261004,
+      "cases": 1000
+    },
+    {
+      "id": "M_DEFL_002::NUMERICAL",
+      "equation": "M_DEFL_002",
+      "kind": "numerical",
+      "cases": 6
+    },
+    {
+      "id": "M_SF_001::REFERENCE",
+      "equation": "M_SF_001",
+      "kind": "reference",
+      "oracle": "allowable/applied",
+      "cases": 1
+    },
+    {
+      "id": "M_SF_001::BOUNDARY::LOWER",
+      "equation": "M_SF_001",
+      "kind": "boundary",
+      "rule": {
+        "atMinimum": "PASS",
+        "belowMinimum": "FAIL"
+      },
+      "cases": 1
+    },
+    {
+      "id": "M_SF_001::BOUNDARY::BELOW",
+      "equation": "M_SF_001",
+      "kind": "failure",
+      "cases": 1
+    },
+    {
+      "id": "M_SF_001::BOUNDARY::ABOVE",
+      "equation": "M_SF_001",
+      "kind": "failure",
+      "cases": 1
+    },
+    {
+      "id": "M_SF_001::PROPERTY",
+      "equation": "M_SF_001",
+      "kind": "property",
+      "seed": 20261004,
+      "cases": 1000
+    },
+    {
+      "id": "M_SF_001::NUMERICAL",
+      "equation": "M_SF_001",
+      "kind": "numerical",
+      "cases": 6
+    },
+    {
+      "id": "M_THERM_002::REFERENCE",
+      "equation": "M_THERM_002",
+      "kind": "reference",
+      "oracle": "Ta+Ploss*Rth",
+      "cases": 1
+    },
+    {
+      "id": "M_THERM_002::BOUNDARY::LOWER",
+      "equation": "M_THERM_002",
+      "kind": "boundary",
+      "rule": {
+        "Rth0": "FAIL",
+        "Ploss0": "T=Ta"
+      },
+      "cases": 1
+    },
+    {
+      "id": "M_THERM_002::BOUNDARY::BELOW",
+      "equation": "M_THERM_002",
+      "kind": "failure",
+      "cases": 1
+    },
+    {
+      "id": "M_THERM_002::BOUNDARY::ABOVE",
+      "equation": "M_THERM_002",
+      "kind": "failure",
+      "cases": 1
+    },
+    {
+      "id": "M_THERM_002::PROPERTY",
+      "equation": "M_THERM_002",
+      "kind": "property",
+      "seed": 20261004,
+      "cases": 1000
+    },
+    {
+      "id": "M_THERM_002::NUMERICAL",
+      "equation": "M_THERM_002",
+      "kind": "numerical",
+      "cases": 6
+    },
+    {
+      "id": "M_THERM_001::REFERENCE",
+      "equation": "M_THERM_001",
+      "kind": "reference",
+      "oracle": "Ta+Ploss*Rth+(T0-Tss)*exp(-t/(Rth*Cth))",
+      "cases": 1
+    },
+    {
+      "id": "M_THERM_001::BOUNDARY::LOWER",
+      "equation": "M_THERM_001",
+      "kind": "boundary",
+      "rule": {
+        "longTime": "approaches analytical steady state"
+      },
+      "cases": 1
+    },
+    {
+      "id": "M_THERM_001::BOUNDARY::BELOW",
+      "equation": "M_THERM_001",
+      "kind": "failure",
+      "cases": 1
+    },
+    {
+      "id": "M_THERM_001::BOUNDARY::ABOVE",
+      "equation": "M_THERM_001",
+      "kind": "failure",
+      "cases": 1
+    },
+    {
+      "id": "M_THERM_001::PROPERTY",
+      "equation": "M_THERM_001",
+      "kind": "property",
+      "seed": 20261004,
+      "cases": 1000
+    },
+    {
+      "id": "M_THERM_001::NUMERICAL",
+      "equation": "M_THERM_001",
+      "kind": "numerical",
+      "cases": 6
+    },
+    {
+      "id": "M_COST_001::REFERENCE",
+      "equation": "M_COST_001",
+      "kind": "reference",
+      "oracle": "sum of components",
+      "cases": 1
+    },
+    {
+      "id": "M_COST_001::BOUNDARY::LOWER",
+      "equation": "M_COST_001",
+      "kind": "boundary",
+      "rule": {
+        "negativeComponent": "FAIL"
+      },
+      "cases": 1
+    },
+    {
+      "id": "M_COST_001::BOUNDARY::BELOW",
+      "equation": "M_COST_001",
+      "kind": "failure",
+      "cases": 1
+    },
+    {
+      "id": "M_COST_001::BOUNDARY::ABOVE",
+      "equation": "M_COST_001",
+      "kind": "failure",
+      "cases": 1
+    },
+    {
+      "id": "M_COST_001::PROPERTY",
+      "equation": "M_COST_001",
+      "kind": "property",
+      "seed": 20261004,
+      "cases": 1000
+    },
+    {
+      "id": "M_COST_001::NUMERICAL",
+      "equation": "M_COST_001",
+      "kind": "numerical",
+      "cases": 6
+    },
+    {
+      "id": "M_SCALE_001::REFERENCE",
+      "equation": "M_SCALE_001",
+      "kind": "reference",
+      "oracle": "m*s^3, tauG*s^4, tauI*s^5",
+      "cases": 1
+    },
+    {
+      "id": "M_SCALE_001::BOUNDARY::LOWER",
+      "equation": "M_SCALE_001",
+      "kind": "boundary",
+      "rule": {
+        "customGeometry": "exponents not applied"
+      },
+      "cases": 1
+    },
+    {
+      "id": "M_SCALE_001::BOUNDARY::BELOW",
+      "equation": "M_SCALE_001",
+      "kind": "failure",
+      "cases": 1
+    },
+    {
+      "id": "M_SCALE_001::BOUNDARY::ABOVE",
+      "equation": "M_SCALE_001",
+      "kind": "failure",
+      "cases": 1
+    },
+    {
+      "id": "M_SCALE_001::PROPERTY",
+      "equation": "M_SCALE_001",
+      "kind": "property",
+      "seed": 20261004,
+      "cases": 1000
+    },
+    {
+      "id": "M_SCALE_001::NUMERICAL",
+      "equation": "M_SCALE_001",
+      "kind": "numerical",
+      "cases": 6
+    },
+    {
+      "id": "M_INTEGRATION_001::REFERENCE",
+      "equation": "M_INTEGRATION_001",
+      "kind": "reference",
+      "oracle": "exp(t)",
+      "cases": 1
+    },
+    {
+      "id": "M_INTEGRATION_001::BOUNDARY::LOWER",
+      "equation": "M_INTEGRATION_001",
+      "kind": "boundary",
+      "rule": {
+        "order": "first-order on dy/dt=y"
+      },
+      "cases": 1
+    },
+    {
+      "id": "M_INTEGRATION_001::BOUNDARY::BELOW",
+      "equation": "M_INTEGRATION_001",
+      "kind": "failure",
+      "cases": 1
+    },
+    {
+      "id": "M_INTEGRATION_001::BOUNDARY::ABOVE",
+      "equation": "M_INTEGRATION_001",
+      "kind": "failure",
+      "cases": 1
+    },
+    {
+      "id": "M_INTEGRATION_001::PROPERTY",
+      "equation": "M_INTEGRATION_001",
+      "kind": "property",
+      "seed": 20261004,
+      "cases": 1000
+    },
+    {
+      "id": "M_INTEGRATION_001::NUMERICAL",
+      "equation": "M_INTEGRATION_001",
+      "kind": "numerical",
+      "cases": 6
+    },
+    {
+      "id": "M_INTEGRATION_002::REFERENCE",
+      "equation": "M_INTEGRATION_002",
+      "kind": "reference",
+      "oracle": "exp(t)",
+      "cases": 1
+    },
+    {
+      "id": "M_INTEGRATION_002::BOUNDARY::LOWER",
+      "equation": "M_INTEGRATION_002",
+      "kind": "boundary",
+      "rule": {
+        "order": "fourth-order on dy/dt=y"
+      },
+      "cases": 1
+    },
+    {
+      "id": "M_INTEGRATION_002::BOUNDARY::BELOW",
+      "equation": "M_INTEGRATION_002",
+      "kind": "failure",
+      "cases": 1
+    },
+    {
+      "id": "M_INTEGRATION_002::BOUNDARY::ABOVE",
+      "equation": "M_INTEGRATION_002",
+      "kind": "failure",
+      "cases": 1
+    },
+    {
+      "id": "M_INTEGRATION_002::PROPERTY",
+      "equation": "M_INTEGRATION_002",
+      "kind": "property",
+      "seed": 20261004,
+      "cases": 1000
+    },
+    {
+      "id": "M_INTEGRATION_002::NUMERICAL",
+      "equation": "M_INTEGRATION_002",
+      "kind": "numerical",
+      "cases": 6
+    }
+  ],
+  "counts": {
+    "equations": 18,
+    "rows": 108,
+    "propertyCases": 18000,
+    "sampleScales": [
+      38.21078258362811,
+      128.4873066153517,
+      498.77237234941117,
+      0.017247410179705644,
+      0.05070045868633573,
+      0.044363561150188996,
+      27.352784363840435,
+      0.20656189733185673
+    ]
+  }
+}

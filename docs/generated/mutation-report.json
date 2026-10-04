@@ -1,0 +1,48 @@
+{
+  "score": 1,
+  "killed": 10,
+  "total": 10,
+  "results": [
+    {
+      "id": "inertia-factor",
+      "killed": true
+    },
+    {
+      "id": "gravity-product",
+      "killed": true
+    },
+    {
+      "id": "friction-sign",
+      "killed": true
+    },
+    {
+      "id": "counterbalance-sign",
+      "killed": true
+    },
+    {
+      "id": "scale-exponent",
+      "killed": true
+    },
+    {
+      "id": "ratio-inverted",
+      "killed": true
+    },
+    {
+      "id": "efficiency-inverted",
+      "killed": true
+    },
+    {
+      "id": "safety-inverted",
+      "killed": true
+    },
+    {
+      "id": "deflection-coefficient",
+      "killed": true
+    },
+    {
+      "id": "thermal-sign",
+      "killed": true
+    }
+  ],
+  "threshold": 1
+}

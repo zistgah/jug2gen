@@ -1,0 +1,23 @@
+{
+  "$id": "j2g-experiment-v1",
+  "type": "object",
+  "required": ["id", "quantity", "unit", "samples", "evidence"],
+  "properties": {
+    "id": { "type": "string" },
+    "quantity": { "type": "string" },
+    "unit": { "type": "string" },
+    "evidence": { "enum": ["C1", "C2", "C3", "C4", "C5", "C6"] },
+    "physicalValidation": { "enum": ["S0", "S1", "S2", "S3", "S4", "S5", "S6"] },
+    "samples": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["t", "value"],
+        "properties": {
+          "t": { "type": "number" },
+          "value": { "type": "number" }
+        }
+      }
+    }
+  }
+}

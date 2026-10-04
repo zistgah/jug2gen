@@ -1,0 +1,20 @@
+import { torqueModel, regimeOf, specificCost, liftEnergy } from "../js/model.js";
+import { buildLinkMesh, stlBinary, threeMf, parseSTL } from "../js/exchange.js";
+
+const t = torqueModel({ m: 50, L: 1, alpha: 1.2 });
+if (!(t.tauPeak > t.tauG && t.tauG > 100)) throw new Error("torque");
+if (regimeOf(50).id !== "swaraj") throw new Error("regime");
+if (regimeOf(0.4).id !== "precision") throw new Error("wall");
+if (regimeOf(400).id !== "crane") throw new Error("crane");
+const low = specificCost(0.3).total;
+const mid = specificCost(50).total;
+if (!(low > mid * 3)) throw new Error("cost kink " + low + " " + mid);
+const e = liftEnergy({ m: 50, L: 1, alpha: 0.2, counterbalance: 0.85 });
+if (!(e.saved > 0.4 && e.saved < 0.98)) throw new Error("energy " + e.saved);
+const mesh = buildLinkMesh({ L: 1, m: 50 });
+const bin = stlBinary(mesh);
+const parsed = parseSTL(bin);
+if (parsed.count !== mesh.count) throw new Error("stl roundtrip");
+const z = threeMf(mesh);
+if (z[0] !== 0x50 || z[1] !== 0x4b) throw new Error("zip");
+console.log("ok", { tau: t.tauPeak.toFixed(1), low: low.toFixed(0), mid: mid.toFixed(0), saved: e.saved.toFixed(2), tris: mesh.count });

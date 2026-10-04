@@ -1,0 +1,19 @@
+{
+  "$id": "j2g-physical-ir-adapter",
+  "description": "Subset emitted by the J2G adapter. Aligned with PANINIphy physical_ir required fields. Not a claim that PANINIphy executes this document.",
+  "type": "object",
+  "required": ["ir_id", "version", "target"],
+  "properties": {
+    "ir_id": { "type": "string" },
+    "version": { "type": "string" },
+    "target": { "type": "string" },
+    "objects": { "type": "array" },
+    "components": { "type": "array" },
+    "materials": { "type": "array" },
+    "actuators": { "type": "array" },
+    "joints": { "type": "array" },
+    "constraints": { "type": "array" },
+    "unresolved": { "type": "array" },
+    "digest": { "type": "string" }
+  }
+}

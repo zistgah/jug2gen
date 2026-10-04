@@ -1,0 +1,742 @@
+[
+  {
+    "assumptions": [
+      "sufficiently small timestep",
+      "Lipschitz f"
+    ],
+    "validity": "dt > 0",
+    "variables": {},
+    "module": "math/numerics.js",
+    "physicalValidation": "S0",
+    "id": "M_INTEGRATION_001",
+    "name": "Explicit Euler step",
+    "latex": "y_{n+1} = y_n + f(t_n, y_n)\\,\\Delta t",
+    "output": "same as y",
+    "implementation": "eulerStep",
+    "evidence": "C3",
+    "status": "S4"
+  },
+  {
+    "assumptions": [
+      "sufficiently smooth f"
+    ],
+    "validity": "dt > 0",
+    "variables": {},
+    "module": "math/numerics.js",
+    "physicalValidation": "S0",
+    "id": "M_INTEGRATION_002",
+    "name": "Classical RK4 step",
+    "latex": "y_{n+1} = y_n + (k_1+2k_2+2k_3+k_4)/6",
+    "output": "same as y",
+    "implementation": "rk4Step",
+    "evidence": "C3",
+    "status": "S4"
+  },
+  {
+    "assumptions": [
+      "small independent uncertainties",
+      "locally linear f"
+    ],
+    "validity": "finite inputs",
+    "variables": {},
+    "module": "math/numerics.js",
+    "physicalValidation": "S0",
+    "id": "M_UNCERTAINTY_001",
+    "name": "First-order uncertainty propagation",
+    "latex": "\\sigma_y^2 \\approx \\sum_i (\\partial f/\\partial x_i)^2 \\sigma_i^2",
+    "output": "same as y",
+    "implementation": "propagateUncertainty",
+    "evidence": "C3",
+    "status": "S4"
+  },
+  {
+    "assumptions": [
+      "finite difference step small vs curvature"
+    ],
+    "validity": "y ≠ 0",
+    "variables": {},
+    "module": "math/numerics.js",
+    "physicalValidation": "S0",
+    "id": "M_SENSITIVITY_001",
+    "name": "Normalized sensitivity",
+    "latex": "S_i^* = (x_i/y)(\\partial y/\\partial x_i)",
+    "output": "1",
+    "implementation": "normalizedSensitivity",
+    "evidence": "C3",
+    "status": "S4"
+  },
+  {
+    "assumptions": [
+      "0 < λ ≤ 1",
+      "λ = 1/2 for a uniform rod"
+    ],
+    "validity": "L > 0",
+    "variables": {
+      "lambda": "1",
+      "L": "m"
+    },
+    "module": "physics/mechanics.js",
+    "physicalValidation": "S0",
+    "id": "M_GEOMETRY_001",
+    "name": "Centre-of-mass fraction",
+    "latex": "L_{cg} = \\lambda L",
+    "output": "m",
+    "implementation": "centreOfMass",
+    "evidence": "C3",
+    "status": "S4"
+  },
+  {
+    "assumptions": [
+      "geometric similarity",
+      "approximately constant density"
+    ],
+    "validity": "not a universal engineering law",
+    "variables": {
+      "rho": "kg/m^3",
+      "k_v": "1",
+      "L": "m"
+    },
+    "module": "physics/mechanics.js",
+    "physicalValidation": "S0",
+    "id": "M_MASS_001",
+    "name": "Mass from geometric similarity",
+    "latex": "m = \\rho k_v L^3",
+    "output": "kg",
+    "implementation": "massFromSimilarity",
+    "evidence": "C3",
+    "status": "S4"
+  },
+  {
+    "assumptions": [
+      "constant density",
+      "prismatic member"
+    ],
+    "validity": "A > 0, L > 0",
+    "variables": {
+      "rho": "kg/m^3",
+      "area": "m^2",
+      "L": "m"
+    },
+    "module": "physics/mechanics.js",
+    "physicalValidation": "S0",
+    "id": "M_MASS_002",
+    "name": "Mass from explicit geometry",
+    "latex": "m = \\rho V = \\rho A L",
+    "output": "kg",
+    "implementation": "massFromGeometry",
+    "evidence": "C3",
+    "status": "S4"
+  },
+  {
+    "assumptions": [
+      "uniform slender rod",
+      "axis perpendicular to rod through one end"
+    ],
+    "validity": "m >= 0, L > 0",
+    "variables": {
+      "m": "kg",
+      "L": "m"
+    },
+    "module": "physics/mechanics.js",
+    "physicalValidation": "S0",
+    "id": "M_INERTIA_001",
+    "name": "Uniform rod inertia about one end",
+    "latex": "I = \\frac{1}{3} m L^2",
+    "output": "kg*m^2",
+    "implementation": "momentOfInertiaRod",
+    "evidence": "C3",
+    "status": "S5"
+  },
+  {
+    "assumptions": [
+      "uniform gravitational field",
+      "moment arm L_cg"
+    ],
+    "validity": "m >= 0, L > 0",
+    "variables": {
+      "m": "kg",
+      "g": "m/s^2",
+      "L_cg": "m"
+    },
+    "module": "physics/mechanics.js",
+    "physicalValidation": "S0",
+    "id": "M_GRAVITY_001",
+    "name": "Gravity torque",
+    "latex": "\\tau_g = m g L_{cg}",
+    "output": "N*m",
+    "implementation": "gravityTorque",
+    "evidence": "C3",
+    "status": "S5"
+  },
+  {
+    "assumptions": [
+      "planar rotation",
+      "radian dimensionless"
+    ],
+    "validity": "I >= 0",
+    "variables": {
+      "I": "kg*m^2",
+      "alpha": "rad/s^2"
+    },
+    "module": "physics/mechanics.js",
+    "physicalValidation": "S0",
+    "id": "M_INERTIAL_001",
+    "name": "Inertial torque",
+    "latex": "\\tau_I = I \\alpha",
+    "output": "N*m",
+    "implementation": "inertialTorque",
+    "evidence": "C3",
+    "status": "S5"
+  },
+  {
+    "assumptions": [
+      "selected friction model is explicit"
+    ],
+    "validity": "b >= 0, tauC >= 0",
+    "variables": {
+      "b": "N*m*s/rad",
+      "omega": "rad/s",
+      "tauC": "N*m"
+    },
+    "module": "physics/mechanics.js",
+    "physicalValidation": "S0",
+    "id": "M_FRICTION_001",
+    "name": "Viscous plus Coulomb friction",
+    "latex": "\\tau_f = b\\omega + \\tau_C\\,\\mathrm{sign}(\\omega)",
+    "output": "N*m",
+    "implementation": "frictionTorque",
+    "evidence": "C3",
+    "status": "S4"
+  },
+  {
+    "assumptions": [
+      "k_f is an assumption, not a universal constant",
+      "illustrative default 0.04"
+    ],
+    "validity": "only when this model is selected",
+    "variables": {
+      "k_f": "1"
+    },
+    "module": "physics/mechanics.js",
+    "physicalValidation": "S0",
+    "id": "M_FRICTION_002",
+    "name": "Proportional friction model",
+    "latex": "\\tau_f = k_f(\\tau_g + \\tau_I)",
+    "output": "N*m",
+    "implementation": "proportionalFriction",
+    "evidence": "C6",
+    "status": "S4"
+  },
+  {
+    "assumptions": [
+      "simple additive single-link model"
+    ],
+    "validity": "single revolute joint",
+    "variables": {},
+    "module": "physics/mechanics.js",
+    "physicalValidation": "S0",
+    "id": "M_DYN_001",
+    "name": "Single-link required torque",
+    "latex": "\\tau = \\tau_g + \\tau_I + \\tau_f + \\tau_{ext}",
+    "output": "N*m",
+    "implementation": "requiredTorque",
+    "evidence": "C3",
+    "status": "S5"
+  },
+  {
+    "assumptions": [
+      "uniform rod",
+      "λ = 1/2",
+      "proportional friction only if selected"
+    ],
+    "validity": "reference analytical model",
+    "variables": {},
+    "module": "physics/mechanics.js",
+    "physicalValidation": "S0",
+    "id": "M_DYN_002",
+    "name": "Canonical peak torque with optional proportional friction",
+    "latex": "\\tau_{peak} = (1+k_f)\\left[mgL/2 + (1/3)m L^2 \\alpha\\right]",
+    "output": "N*m",
+    "implementation": "peakTorqueUniformRod",
+    "evidence": "C3",
+    "status": "S5"
+  },
+  {
+    "assumptions": [
+      "counterbalance reduces actuator torque, not necessarily energy one-for-one"
+    ],
+    "validity": "single joint",
+    "variables": {},
+    "module": "physics/mechanics.js",
+    "physicalValidation": "S0",
+    "id": "M_CB_001",
+    "name": "Counterbalanced motor torque",
+    "latex": "\\tau_{motor} = \\tau_g + \\tau_I + \\tau_f - \\tau_{cb} + \\tau_{ext}",
+    "output": "N*m",
+    "implementation": "motorTorqueWithCounterbalance",
+    "evidence": "C3",
+    "status": "S4"
+  },
+  {
+    "assumptions": [
+      "piecewise constant torque on each step"
+    ],
+    "validity": "θ in radians",
+    "variables": {},
+    "module": "physics/mechanics.js",
+    "physicalValidation": "S0",
+    "id": "M_ENERGY_001",
+    "name": "Numerical mechanical work",
+    "latex": "W \\approx \\sum \\tau_i \\Delta\\theta_i",
+    "output": "J",
+    "implementation": "workFromTorque",
+    "evidence": "C3",
+    "status": "S4"
+  },
+  {
+    "assumptions": [
+      "geometric similarity",
+      "constant density",
+      "comparable angular acceleration for τ_I"
+    ],
+    "validity": "not valid for machines that break similarity",
+    "variables": {},
+    "module": "physics/mechanics.js",
+    "physicalValidation": "S0",
+    "id": "M_SCALE_001",
+    "name": "Geometric similarity scaling",
+    "latex": "m \\propto L^3,\\ \\tau_g \\propto L^4,\\ \\tau_I \\propto L^5",
+    "output": "mixed",
+    "implementation": "scaleFromReference",
+    "evidence": "C3",
+    "status": "S4"
+  },
+  {
+    "assumptions": [
+      "uniform timestep",
+      "backward difference"
+    ],
+    "validity": "dt > 0",
+    "variables": {},
+    "module": "physics/mechanics.js",
+    "physicalValidation": "S0",
+    "id": "M_KIN_001",
+    "name": "Discrete angular kinematics",
+    "latex": "\\omega_i \\approx (\\theta_i-\\theta_{i-1})/\\Delta t,\\ \\alpha_i \\approx (\\omega_i-\\omega_{i-1})/\\Delta t",
+    "output": "rad/s, rad/s^2",
+    "implementation": "differentiateAngle",
+    "evidence": "C3",
+    "status": "S4"
+  },
+  {
+    "assumptions": [
+      "ω in rad/s, not rpm"
+    ],
+    "validity": "finite τ, ω",
+    "variables": {
+      "tau": "N*m",
+      "omega": "rad/s"
+    },
+    "module": "actuators/actuator.js",
+    "physicalValidation": "S0",
+    "id": "M_POWER_001",
+    "name": "Mechanical rotational power",
+    "latex": "P_{mech} = \\tau \\omega",
+    "output": "W",
+    "implementation": "mechanicalPower",
+    "evidence": "C3",
+    "status": "S5"
+  },
+  {
+    "assumptions": [
+      "0 < η ≤ 1",
+      "η is a model parameter"
+    ],
+    "validity": "P_mech >= 0 for motor consumption convention used here",
+    "variables": {
+      "eta": "1"
+    },
+    "module": "actuators/actuator.js",
+    "physicalValidation": "S0",
+    "id": "M_POWER_002",
+    "name": "Electrical power from efficiency",
+    "latex": "P_{elec} = P_{mech}/\\eta",
+    "output": "W",
+    "implementation": "electricalPower",
+    "evidence": "C3",
+    "status": "S4"
+  },
+  {
+    "assumptions": [
+      "DC-equivalent input",
+      "not a full motor circuit"
+    ],
+    "validity": "V > 0, 0 < η ≤ 1",
+    "variables": {},
+    "module": "actuators/actuator.js",
+    "physicalValidation": "S0",
+    "id": "M_CURRENT_001",
+    "name": "DC-equivalent current",
+    "latex": "I = \\tau\\omega/(\\eta V)",
+    "output": "A",
+    "implementation": "motorCurrent",
+    "evidence": "C3",
+    "status": "S4"
+  },
+  {
+    "assumptions": [
+      "lumped winding resistance"
+    ],
+    "validity": "R >= 0",
+    "variables": {},
+    "module": "actuators/actuator.js",
+    "physicalValidation": "S0",
+    "id": "M_COPPER_001",
+    "name": "Resistive copper loss",
+    "latex": "P_{Cu} = I^2 R",
+    "output": "W",
+    "implementation": "copperLoss",
+    "evidence": "C3",
+    "status": "S4"
+  },
+  {
+    "assumptions": [
+      "ideal tooth-count ratio",
+      "constant stage efficiency"
+    ],
+    "validity": "N_in > 0, N_out > 0, 0 < η ≤ 1",
+    "variables": {},
+    "module": "transmission/transmission.js",
+    "physicalValidation": "S0",
+    "id": "M_TRANS_001",
+    "name": "Gear or chain reduction",
+    "latex": "R = N_{out}/N_{in},\\ \\omega_{out}=\\omega_{in}/R,\\ \\tau_{out}=\\tau_{in} R \\eta_t",
+    "output": "1, rad/s, N*m",
+    "implementation": "stageReduction",
+    "evidence": "C3",
+    "status": "S4"
+  },
+  {
+    "assumptions": [
+      "no inertia of transmission"
+    ],
+    "validity": "R > 0, 0 < η ≤ 1",
+    "variables": {},
+    "module": "transmission/transmission.js",
+    "physicalValidation": "S0",
+    "id": "M_TRANS_002",
+    "name": "Required motor torque",
+    "latex": "\\tau_{motor} = \\tau_{out}/(R \\eta_t)",
+    "output": "N*m",
+    "implementation": "requiredMotorTorque",
+    "evidence": "C3",
+    "status": "S4"
+  },
+  {
+    "assumptions": [
+      "effective sprocket radius",
+      "quasi-static"
+    ],
+    "validity": "r > 0",
+    "variables": {
+      "tau": "N*m",
+      "r": "m"
+    },
+    "module": "transmission/transmission.js",
+    "physicalValidation": "S0",
+    "id": "M_CHAIN_001",
+    "name": "Chain or belt tension",
+    "latex": "F = \\tau / r",
+    "output": "N",
+    "implementation": "chainTension",
+    "evidence": "C3",
+    "status": "S4"
+  },
+  {
+    "assumptions": [
+      "backlash is a configurable parameter"
+    ],
+    "validity": "β >= 0",
+    "variables": {},
+    "module": "transmission/transmission.js",
+    "physicalValidation": "S0",
+    "id": "M_BACKLASH_001",
+    "name": "Backlash unit conversion",
+    "latex": "\\beta_{deg} = \\beta_{rad}\\,180/\\pi",
+    "output": "deg",
+    "implementation": "backlash",
+    "evidence": "C3",
+    "status": "S4"
+  },
+  {
+    "assumptions": [
+      "axis through centroid, parallel to width"
+    ],
+    "validity": "b > 0, h > 0",
+    "variables": {},
+    "module": "structures/structures.js",
+    "physicalValidation": "S0",
+    "id": "M_SECTION_001",
+    "name": "Rectangular second moment",
+    "latex": "I = b h^3 / 12",
+    "output": "m^4",
+    "implementation": "secondMomentRectangular",
+    "evidence": "C3",
+    "status": "S5"
+  },
+  {
+    "assumptions": [
+      "solid circular section"
+    ],
+    "validity": "d > 0",
+    "variables": {},
+    "module": "structures/structures.js",
+    "physicalValidation": "S0",
+    "id": "M_SECTION_002",
+    "name": "Solid circular second moment",
+    "latex": "I = \\pi d^4 / 64",
+    "output": "m^4",
+    "implementation": "secondMomentCircular",
+    "evidence": "C3",
+    "status": "S5"
+  },
+  {
+    "assumptions": [
+      "Euler-Bernoulli",
+      "elastic",
+      "plane sections"
+    ],
+    "validity": "I > 0",
+    "variables": {},
+    "module": "structures/structures.js",
+    "physicalValidation": "S0",
+    "id": "M_BEND_001",
+    "name": "Elastic bending stress",
+    "latex": "\\sigma = M c / I",
+    "output": "Pa",
+    "implementation": "bendingStress",
+    "evidence": "C3",
+    "status": "S4"
+  },
+  {
+    "assumptions": [
+      "cantilever",
+      "point load at free end",
+      "small deflection",
+      "constant EI"
+    ],
+    "validity": "do not use for other boundary conditions",
+    "variables": {},
+    "module": "structures/structures.js",
+    "physicalValidation": "S0",
+    "id": "M_DEFL_001",
+    "name": "Cantilever end-point deflection",
+    "latex": "\\delta = F L^3 / (3 E I)",
+    "output": "m",
+    "implementation": "cantileverPointDeflection",
+    "evidence": "C3",
+    "status": "S5"
+  },
+  {
+    "assumptions": [
+      "cantilever",
+      "uniform load w force per length",
+      "small deflection"
+    ],
+    "validity": "stated boundary condition only",
+    "variables": {},
+    "module": "structures/structures.js",
+    "physicalValidation": "S0",
+    "id": "M_DEFL_002",
+    "name": "Cantilever uniform-load deflection",
+    "latex": "\\delta = w L^4 / (8 E I)",
+    "output": "m",
+    "implementation": "cantileverDistributedDeflection",
+    "evidence": "C3",
+    "status": "S4"
+  },
+  {
+    "assumptions": [
+      "circular shaft",
+      "elastic"
+    ],
+    "validity": "J > 0",
+    "variables": {},
+    "module": "structures/structures.js",
+    "physicalValidation": "S0",
+    "id": "M_TORSION_001",
+    "name": "Torsional shear",
+    "latex": "\\tau = T r / J",
+    "output": "Pa",
+    "implementation": "torsionalShear",
+    "evidence": "C3",
+    "status": "S4"
+  },
+  {
+    "assumptions": [
+      "plane stress combination of bending and torsion"
+    ],
+    "validity": "elastic assessment",
+    "variables": {},
+    "module": "structures/structures.js",
+    "physicalValidation": "S0",
+    "id": "M_VM_001",
+    "name": "Shaft von Mises equivalent",
+    "latex": "\\sigma_{vm} = \\sqrt{\\sigma_b^2 + 3\\tau_t^2}",
+    "output": "Pa",
+    "implementation": "vonMisesShaft",
+    "evidence": "C3",
+    "status": "S4"
+  },
+  {
+    "assumptions": [
+      "caller selects the failure quantity",
+      "minimum SF is configurable"
+    ],
+    "validity": "applied > 0",
+    "variables": {},
+    "module": "structures/structures.js",
+    "physicalValidation": "S0",
+    "id": "M_SF_001",
+    "name": "Factor of safety",
+    "latex": "SF = allowable / applied",
+    "output": "1",
+    "implementation": "safetyFactor",
+    "evidence": "C3",
+    "status": "S4"
+  },
+  {
+    "assumptions": [
+      "uniform conductor",
+      "constant resistivity"
+    ],
+    "validity": "geometry available",
+    "variables": {},
+    "module": "electrical/electrical.js",
+    "physicalValidation": "S0",
+    "id": "M_ELEC_001",
+    "name": "Conductor resistance",
+    "latex": "R = \\rho_e L / A",
+    "output": "ohm",
+    "implementation": "conductorResistance",
+    "evidence": "C3",
+    "status": "S4"
+  },
+  {
+    "assumptions": [
+      "lumped resistance"
+    ],
+    "validity": "finite I, R",
+    "variables": {},
+    "module": "electrical/electrical.js",
+    "physicalValidation": "S0",
+    "id": "M_ELEC_002",
+    "name": "Ohmic voltage drop",
+    "latex": "\\Delta V = I R",
+    "output": "V",
+    "implementation": "voltageDrop",
+    "evidence": "C3",
+    "status": "S4"
+  },
+  {
+    "assumptions": [
+      "nominal voltage times ampere-hours",
+      "not a dynamic cell model"
+    ],
+    "validity": "do not claim accurate battery behaviour",
+    "variables": {},
+    "module": "electrical/electrical.js",
+    "physicalValidation": "S0",
+    "id": "M_BATT_001",
+    "name": "Nominal battery energy",
+    "latex": "E = V_{nom} Q",
+    "output": "Wh",
+    "implementation": "batteryEnergy",
+    "evidence": "C3",
+    "status": "S4"
+  },
+  {
+    "assumptions": [
+      "single thermal mass",
+      "constant R_th and C_th",
+      "Newton cooling"
+    ],
+    "validity": "C_th > 0, R_th > 0, dt small enough for Euler",
+    "variables": {},
+    "module": "thermal/lumped.js",
+    "physicalValidation": "S0",
+    "id": "M_THERM_001",
+    "name": "Lumped thermal ODE",
+    "latex": "C_{th} dT/dt = P_{loss} - (T - T_{amb})/R_{th}",
+    "output": "K",
+    "implementation": "thermalTransient",
+    "evidence": "C3",
+    "status": "S4"
+  },
+  {
+    "assumptions": [
+      "steady lumped balance"
+    ],
+    "validity": "R_th > 0",
+    "variables": {},
+    "module": "thermal/lumped.js",
+    "physicalValidation": "S0",
+    "id": "M_THERM_002",
+    "name": "Steady temperature",
+    "latex": "T_{ss} = T_{amb} + P_{loss} R_{th}",
+    "output": "K",
+    "implementation": "thermalSteady",
+    "evidence": "C3",
+    "status": "S5"
+  },
+  {
+    "assumptions": [
+      "caller supplies each component",
+      "currency is opaque"
+    ],
+    "validity": "components >= 0",
+    "variables": {},
+    "module": "economics/cost.js",
+    "physicalValidation": "S0",
+    "id": "M_COST_001",
+    "name": "Additive cost",
+    "latex": "C = C_m + C_e + C_t + C_l + C_p + C_test + C_o + C_f",
+    "output": "currency",
+    "implementation": "additiveCost",
+    "evidence": "C3",
+    "status": "S4"
+  },
+  {
+    "assumptions": [
+      "parametric, not a quote"
+    ],
+    "validity": "not identical to the additive model by construction",
+    "variables": {},
+    "module": "economics/cost.js",
+    "physicalValidation": "S0",
+    "id": "M_COST_002",
+    "name": "Parametric node cost",
+    "latex": "C(m) = C_{infra}(m) + m p + C_{act}(\\tau) + C_{prec}(P)",
+    "output": "currency",
+    "implementation": "parametricCost",
+    "evidence": "C4",
+    "status": "S4"
+  },
+  {
+    "assumptions": [
+      "limiting conceptual model",
+      "not equal to raw-material cost today"
+    ],
+    "validity": "retain labour, tools, testing, yield, failure, energy, capital, precision, overhead",
+    "variables": {},
+    "module": "economics/cost.js",
+    "physicalValidation": "S0",
+    "id": "M_PARITY_001",
+    "name": "Material-parity limit",
+    "latex": "\\lim C_{machine} \\approx \\sum m_i p_i + E_{process}",
+    "output": "currency",
+    "implementation": "materialParity",
+    "evidence": "C5",
+    "status": "S3"
+  }
+]

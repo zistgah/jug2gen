@@ -1,0 +1,47 @@
+[
+  {
+    "id": "A-G",
+    "text": "g defaults to 9.80665 m/s² and is configurable.",
+    "evidence": "C3"
+  },
+  {
+    "id": "A-LAMBDA",
+    "text": "Uniform rod uses λ = 1/2.",
+    "evidence": "C3"
+  },
+  {
+    "id": "A-SIM",
+    "text": "L³/L⁴/L⁵ scaling applies only under geometric similarity.",
+    "evidence": "C3"
+  },
+  {
+    "id": "A-KF",
+    "text": "Proportional friction is opt-in.",
+    "evidence": "C6"
+  },
+  {
+    "id": "A-CB",
+    "text": "Counterbalance torque reduction is not automatically energy reduction.",
+    "evidence": "C3"
+  },
+  {
+    "id": "A-BATT",
+    "text": "Battery energy E = V Q is not a cell model.",
+    "evidence": "C3"
+  },
+  {
+    "id": "A-FATIGUE",
+    "text": "No fatigue curve is invented.",
+    "evidence": "C3"
+  },
+  {
+    "id": "A-MB",
+    "text": "Multi-body dynamics is an interface, not a solver.",
+    "evidence": "C3"
+  },
+  {
+    "id": "A-REGIME",
+    "text": "Regime walls are shop hypotheses, not physics discontinuities.",
+    "evidence": "C6"
+  }
+]

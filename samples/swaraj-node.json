@@ -1,0 +1,17 @@
+{
+  "format": "j2g-node",
+  "version": 1,
+  "classification": "Cat 4/6 illustrative parameter set",
+  "state": {
+    "L": 1,
+    "m": 50,
+    "alpha": 1.2,
+    "P": 1000,
+    "V": 12,
+    "eta": 0.7,
+    "counterbalance": 0.85,
+    "density": 7850,
+    "skill": 2,
+    "compute": 2
+  }
+}

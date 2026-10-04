@@ -1,0 +1,29 @@
+{
+  "displayed": 612,
+  "reproduced": false,
+  "hypotheses": [
+    {
+      "name": "canonical λ=1/2, α=1, k_f=0.04",
+      "tau": 272.30623333333335
+    },
+    {
+      "name": "canonical without friction",
+      "tau": 261.8329166666667
+    },
+    {
+      "name": "Lcg = L, no friction, α=1",
+      "tau": 506.99916666666667
+    },
+    {
+      "name": "m g L * 1.25 with g=9.81",
+      "tau": 613.125
+    },
+    {
+      "name": "existing UI preset α=1.2, k_f=0.04",
+      "tau": 275.7729
+    }
+  ],
+  "conclusion": "612 N·m is not produced by the canonical uniform-rod equation at the reference parameters. It is flagged, not preserved as an engineering result.",
+  "evidence": "C6",
+  "physicalValidation": "S0"
+}

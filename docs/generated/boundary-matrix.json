@@ -1,0 +1,72 @@
+{
+  "boundary": [
+    {
+      "boundary": "THERMAL_LIMIT",
+      "below": 299.999,
+      "at": 300,
+      "above": 300.001,
+      "expected": [
+        "PASS",
+        "PASS",
+        "FAIL"
+      ]
+    },
+    {
+      "boundary": "STRUCTURAL_SF",
+      "below": 1.999,
+      "at": 2,
+      "above": 2.001,
+      "expected": [
+        "FAIL",
+        "PASS",
+        "PASS"
+      ]
+    },
+    {
+      "boundary": "ACTUATOR_TORQUE",
+      "below": 99.999,
+      "at": 100,
+      "above": 100.001,
+      "expected": [
+        "FAIL",
+        "PASS",
+        "PASS"
+      ],
+      "note": "mathematical feasibility; engineering acceptance uses a separate margin"
+    },
+    {
+      "boundary": "EFFICIENCY",
+      "below": 0,
+      "at": 1,
+      "above": 1.001,
+      "expected": [
+        "FAIL",
+        "PASS",
+        "FAIL"
+      ]
+    },
+    {
+      "boundary": "REGIME_SWARAJ_ENTRY",
+      "below": 9.999,
+      "at": 10,
+      "above": 10.001,
+      "expected": [
+        "bridge",
+        "swaraj",
+        "swaraj"
+      ]
+    },
+    {
+      "boundary": "MANUFACTURING_TOLERANCE",
+      "below": "P_process-eps",
+      "at": "P_process",
+      "above": "P_process+eps",
+      "expected": [
+        "FAIL",
+        "PASS",
+        "PASS"
+      ]
+    }
+  ],
+  "physicalValidation": "S0"
+}
