@@ -1,0 +1,14 @@
+cff-version: 1.2.0
+message: "If you use this laboratory, please cite it as below."
+title: "Jugaad to Genesis: a parametric simulation and exchange laboratory"
+version: 1.1.0
+date-released: '2026-10-04'
+license: GPL-3.0-or-later
+repository-code: "https://github.com/zistgah/jug2gen"
+url: "https://zistgah.github.io/jug2gen/"
+authors:
+  - family-names: Choudhary
+    given-names: Abhishek
+    affiliation: AyeAI
+    orcid: "https://orcid.org/0009-0002-0684-8320"
+keywords: [jugaad, frugal engineering, parametric model, simulation, CAD, CNC, foundry, robotics, Humanesque, Zistgah]

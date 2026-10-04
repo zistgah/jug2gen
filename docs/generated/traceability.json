@@ -142,21 +142,21 @@
   [
     "REQ-PHY-001",
     "PANINIphy adapter",
-    "—",
+    ", ",
     "panini/adapter.js",
     "TEST-PANINI-001"
   ],
   [
     "REQ-Q-001",
     "PANINIq control boundary",
-    "—",
+    ", ",
     "panini/adapter.js",
     "TEST-PANINI-002"
   ],
   [
     "REQ-EXP-001",
     "Experiment schema and calibration",
-    "—",
+    ", ",
     "experiments/experiments.js",
     "TEST-CAL-001"
   ]

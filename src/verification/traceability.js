@@ -24,9 +24,9 @@ export const TRACEABILITY = [
   ["REQ-REG-001", "Regime classification", "M_PARITY_001", "economics/cost.js", "TEST-REGIME-001"],
   ["REQ-GEO-001", "Geometry closure", "M_MASS_002", "geometry/closure.js", "TEST-GEO-001"],
   ["REQ-MFG-001", "Manufacturing feasibility", "M_MASS_002", "manufacturing/manufacturing.js", "TEST-MFG-001"],
-  ["REQ-PHY-001", "PANINIphy adapter", "—", "panini/adapter.js", "TEST-PANINI-001"],
-  ["REQ-Q-001", "PANINIq control boundary", "—", "panini/adapter.js", "TEST-PANINI-002"],
-  ["REQ-EXP-001", "Experiment schema and calibration", "—", "experiments/experiments.js", "TEST-CAL-001"],
+  ["REQ-PHY-001", "PANINIphy adapter", ", ", "panini/adapter.js", "TEST-PANINI-001"],
+  ["REQ-Q-001", "PANINIq control boundary", ", ", "panini/adapter.js", "TEST-PANINI-002"],
+  ["REQ-EXP-001", "Experiment schema and calibration", ", ", "experiments/experiments.js", "TEST-CAL-001"],
 ];
 
 export const CLAIMS = [

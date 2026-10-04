@@ -1,4 +1,4 @@
-# CHANGELOG — V1.0
+# CHANGELOG, V1.0
 
 ## Mathematical closure
 

@@ -1,5 +1,7 @@
 # Jugaad to Genesis
 
+© 1993–2026 Abhishek Choudhary. All rights reserved. AyeAI.
+
 Parametric simulation and exchange laboratory for the Jugaad-to-Genesis mechanical model.
 
 The site is static. It is meant to be served by GitHub Pages from the repository root. No build step.
@@ -19,6 +21,11 @@ The Workflow panel runs the time-stepped models in `js/simulate.js`: joint and a
 - `docs/SOVEREIGNTY-AND-RAYMAN.md`
 - `docs/EVIDENCE-REGISTER.md`
 - `docs/PROVENANCE.md`
+- `docs/EMBODIMENT-LAYERS.md`
+- `docs/PARAMETERS.md`
+- `docs/HAL-AND-FIRMWARE.md`
+- `docs/REALIZATION-175-75.md`
+- `docs/GROK-WORK-PACKAGES.md`
 
 ## Provenance
 
@@ -115,3 +122,11 @@ Canonical analytical reference, with g = 9.80665 m/s², m = 50 kg, L = 1 m, λ =
 That is a model result, not a measurement. The historical 612 N·m poster figure is not reproduced. See `V1.0-AUDIT.md` and `docs/V1.0-SPECIFICATION.md`.
 
 Physical validation status for this release is S0. PANINIphy and PANINIq are adapter boundaries (`docs/PANINI-BOUNDARY.md`), not realizations.
+
+## Citation and status
+
+Cite this laboratory with `CITATION.cff`. Its physical validation status is S0: every figure it produces is a model result, not a measurement. The gate, `bash ops/verify.sh`, runs the test suite and the verifier and checks the attribution and the release metadata; `CONTRACT.md` lists what it checks and `CONTEXT.md` says where the laboratory sits in the estate.
+
+## Licence
+
+The code is licensed under the GNU General Public License, version 3 or later (`LICENSE`); the text and figures under Creative Commons Attribution-ShareAlike 4.0 (`LICENSE-docs`).

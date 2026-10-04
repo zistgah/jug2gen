@@ -1,0 +1,100 @@
+{
+ "name": "humanoid-175-75",
+ "evidence": "targets Cat 5, costs Cat 6; physical validation S0",
+ "scale": {
+  "height_m": 1.75,
+  "mass_kg": 75,
+  "s": 1.0
+ },
+ "body_plan": {
+  "head_neck": {
+   "joints": 2,
+   "actuation": "qdd"
+  },
+  "torso": {
+   "joints": 3,
+   "actuation": "qdd+strain-wave"
+  },
+  "arms": {
+   "count": 2,
+   "joints_each": 7,
+   "layout": "shoulder 3, elbow 1, wrist 3",
+   "actuation": "qdd+strain-wave"
+  },
+  "hands": {
+   "count": 2,
+   "joints_each": 22,
+   "actuation": "tendon, micro linear actuators in forearm"
+  },
+  "legs": {
+   "count": 2,
+   "joints_each": 6,
+   "layout": "hip 3, knee 1, ankle 2",
+   "actuation": "eha"
+  },
+  "total_joints": 75
+ },
+ "sensing": {
+  "vision": "foveated RGB+IR, solid-state LiDAR, 120 Hz mesh",
+  "tactile_per_cm2": 50,
+  "encoders": "absolute magnetic, every joint, 2 kHz",
+  "force_torque": "6-axis at wrists and ankles, 2 kHz"
+ },
+ "comms": {
+  "internal": "EtherCAT",
+  "latency_ms_max": 1,
+  "rf": [
+   "433MHz",
+   "2.4GHz",
+   "5GHz",
+   "UWB"
+  ],
+  "optical_nm": [
+   850,
+   940
+  ],
+  "acoustic": "20 Hz to 20 kHz; ultrasonic above 40 kHz"
+ },
+ "firmware": {
+  "foc_hz": 10000,
+  "impedance_hz": 1000,
+  "observer_bandwidth_rad_s": 628,
+  "hal_hz": 1000
+ },
+ "power": {
+  "battery_kwh": 2.8,
+  "target_wh_per_kg": 350,
+  "current_wh_per_kg": 250
+ },
+ "mass_budget_kg": {
+  "structure": 15.0,
+  "leg_actuators": 14.4,
+  "upper_actuators": 11.4,
+  "hands": 3.8,
+  "battery": 8.0,
+  "power_electronics": 2.0,
+  "compute": 2.5,
+  "sensors": 3.0,
+  "harness": 3.0,
+  "skin_covers_cooling": 4.8,
+  "margin": 7.1
+ },
+ "targets": {
+  "repeatability_mm": 0.05,
+  "actuator_power_density_w_per_kg": 250,
+  "sensor_latency_ms": 5,
+  "impedance_bandwidth_hz": 1000,
+  "workcell_lift_kg": 50
+ },
+ "cost_usd": {
+  "raw_materials": 2400,
+  "prototype_bom": [
+   125000,
+   225000
+  ],
+  "extra_hand_actuators": [
+   6000,
+   10000
+  ]
+ }
+}

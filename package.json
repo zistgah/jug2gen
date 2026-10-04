@@ -1,9 +1,9 @@
 {
   "name": "jugaad-to-genesis",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "type": "module",
-  "description": "JUGAAD → SWARAJ → GENESIS V1.0 computational engineering laboratory",
+  "description": "JUGAAD \u2192 SWARAJ \u2192 GENESIS V1.0 computational engineering laboratory",
   "scripts": {
     "test": "node tests/model.test.mjs && node --test tests/engine.test.mjs tests/domain-matrix.test.mjs tests/numerical-convergence.test.mjs tests/dependency-graph.test.mjs",
     "test:generate": "node cli/generate-matrix.mjs",
@@ -21,5 +21,6 @@
   },
   "engines": {
     "node": ">=18"
-  }
+  },
+  "license": "GPL-3.0-or-later"
 }

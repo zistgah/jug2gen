@@ -2,12 +2,12 @@
 
 Curated architecture for the laboratory. This is not a claim that every sentence was already a published specification. Tags follow the source interrogation.
 
-- Cat 1 — named by the author in the supplied material
-- Cat 2 — previously established work, pending external check
-- Cat 3 — synthesis
-- Cat 4 — proposed design
-- Cat 5 — engineering claim that needs a test
-- Cat 6 — illustrative number
+- Cat 1: named by the author in the supplied material
+- Cat 2: previously established work, pending external check
+- Cat 3: synthesis
+- Cat 4: proposed design
+- Cat 5: engineering claim that needs a test
+- Cat 6: illustrative number
 
 ## Spine
 

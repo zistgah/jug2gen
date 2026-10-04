@@ -159,7 +159,7 @@ export function objText(mesh) {
 export function scadText(state, mesh) {
   const m = mesh.meta;
   return `// Jugaad-to-Genesis parametric link
-// Illustrative fabrication solid — not a certified drawing.
+// Illustrative fabrication solid, not a certified drawing.
 // Open in OpenSCAD. Units: millimetres.
 
 L = ${m.length.toFixed(2)};
@@ -235,7 +235,7 @@ export function gcodeText(mesh) {
   const plunge = 60;
   let g = [];
   g.push("(Jugaad-to-Genesis flange contour)");
-  g.push("(Illustrative GRBL 2.5D path — verify offsets, stock, and tool before cutting)");
+  g.push("(Illustrative GRBL 2.5D path, verify offsets, stock, and tool before cutting)");
   g.push("(Units mm, absolute, tool assumed 3 mm endmill, conventional)");
   g.push("G21");
   g.push("G90");

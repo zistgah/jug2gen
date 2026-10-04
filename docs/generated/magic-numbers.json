@@ -4096,7 +4096,7 @@
       "file": "src/reports/report.js",
       "line": 122,
       "number": "1.0",
-      "context": "return `# CHANGELOG — V1.0"
+      "context": "return `# CHANGELOG, V1.0"
     },
     {
       "file": "src/reports/report.js",
@@ -7246,37 +7246,37 @@
       "file": "src/verification/traceability.js",
       "line": 27,
       "number": "-001",
-      "context": "[\"REQ-PHY-001\", \"PANINIphy adapter\", \"—\", \"panini/adapter.js\", \"TEST-PANINI-001\"],"
+      "context": "[\"REQ-PHY-001\", \"PANINIphy adapter\", \", \", \"panini/adapter.js\", \"TEST-PANINI-001\"],"
     },
     {
       "file": "src/verification/traceability.js",
       "line": 27,
       "number": "-001",
-      "context": "[\"REQ-PHY-001\", \"PANINIphy adapter\", \"—\", \"panini/adapter.js\", \"TEST-PANINI-001\"],"
+      "context": "[\"REQ-PHY-001\", \"PANINIphy adapter\", \", \", \"panini/adapter.js\", \"TEST-PANINI-001\"],"
     },
     {
       "file": "src/verification/traceability.js",
       "line": 28,
       "number": "-001",
-      "context": "[\"REQ-Q-001\", \"PANINIq control boundary\", \"—\", \"panini/adapter.js\", \"TEST-PANINI-002\"],"
+      "context": "[\"REQ-Q-001\", \"PANINIq control boundary\", \", \", \"panini/adapter.js\", \"TEST-PANINI-002\"],"
     },
     {
       "file": "src/verification/traceability.js",
       "line": 28,
       "number": "-002",
-      "context": "[\"REQ-Q-001\", \"PANINIq control boundary\", \"—\", \"panini/adapter.js\", \"TEST-PANINI-002\"],"
+      "context": "[\"REQ-Q-001\", \"PANINIq control boundary\", \", \", \"panini/adapter.js\", \"TEST-PANINI-002\"],"
     },
     {
       "file": "src/verification/traceability.js",
       "line": 29,
       "number": "-001",
-      "context": "[\"REQ-EXP-001\", \"Experiment schema and calibration\", \"—\", \"experiments/experiments.js\", \"TEST-CAL-001\"],"
+      "context": "[\"REQ-EXP-001\", \"Experiment schema and calibration\", \", \", \"experiments/experiments.js\", \"TEST-CAL-001\"],"
     },
     {
       "file": "src/verification/traceability.js",
       "line": 29,
       "number": "-001",
-      "context": "[\"REQ-EXP-001\", \"Experiment schema and calibration\", \"—\", \"experiments/experiments.js\", \"TEST-CAL-001\"],"
+      "context": "[\"REQ-EXP-001\", \"Experiment schema and calibration\", \", \", \"experiments/experiments.js\", \"TEST-CAL-001\"],"
     },
     {
       "file": "src/verification/traceability.js",

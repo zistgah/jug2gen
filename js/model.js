@@ -337,7 +337,7 @@ export function sweepCost(pMin = 0.25, pMax = 600, n = 160) {
 }
 
 export function format(n, d = 1) {
-  if (!Number.isFinite(n)) return "—";
+  if (!Number.isFinite(n)) return ", ";
   const a = Math.abs(n);
   if (a >= 1000) return n.toLocaleString("en-IN", { maximumFractionDigits: 0 });
   if (a >= 100) return n.toFixed(0);

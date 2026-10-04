@@ -119,7 +119,7 @@ See CHANGELOG-V1.0.md. Physical validation remains S0 throughout.
 }
 
 export function changelog() {
-  return `# CHANGELOG — V1.0
+  return `# CHANGELOG, V1.0
 
 ## Added
 

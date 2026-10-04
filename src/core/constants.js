@@ -3,12 +3,12 @@
  * instead of scattering equivalent literals.
  *
  * Classes:
- *   mathematical — identity of a formula
- *   physical     — conventional physical standard
- *   assumption   — configurable project assumption
- *   hypothesis   — regime/threshold hypothesis
- *   fixture      — reference test input, not a law
- *   derived      — result of an independent formula
+ *   mathematical, identity of a formula
+ *   physical    , conventional physical standard
+ *   assumption  , configurable project assumption
+ *   hypothesis  , regime/threshold hypothesis
+ *   fixture     , reference test input, not a law
+ *   derived     , result of an independent formula
  */
 
 export const ROD_INERTIA_FACTOR = 1 / 3;

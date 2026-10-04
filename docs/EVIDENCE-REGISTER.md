@@ -22,6 +22,6 @@ This repository does not independently confirm patents, repositories, or flight 
 | ±0.1 mm, ±5 µm, ±1 µm | Targets | Unverified |
 | Genesis loop demonstrated | Not claimed | Closure score is a checklist |
 
-Verification intended by stage: Jugaad — it moves, current is sane. Swaraj — strobe or encoder, thermal load, a second shop can follow the pack. Genesis-facing — self-test, acoustic where instrumented, a stated safety check. [Cat 3/4]
+Verification intended by stage: Jugaad, it moves, current is sane. Swaraj, strobe or encoder, thermal load, a second shop can follow the pack. Genesis-facing, self-test, acoustic where instrumented, a stated safety check. [Cat 3/4]
 
 Open, operationally: code, CAD, process, curriculum, tests, provenance. Not a logo.

@@ -1,0 +1,30 @@
+{
+ "title": "Jugaad to Genesis: a parametric simulation and exchange laboratory",
+ "version": "1.1.0",
+ "upload_type": "software",
+ "description": "A static, browser-based laboratory for the Jugaad-to-Genesis mechanical model: the node, its cost landscape, torque, capability field, regimes and bill of materials, CAD, CNC and print exchange, foundry energy and winding, with an executable engineering model of 42 equations, property, boundary, numerical and mutation tests, and a verifier. Physical validation status S0: every figure is a model result, not a measurement. PANINIphy and PANINIq appear as adapter boundaries, not realizations.",
+ "license": "GPL-3.0-or-later",
+ "access_right": "open",
+ "language": "eng",
+ "creators": [
+  {
+   "name": "Choudhary, Abhishek",
+   "affiliation": "AyeAI",
+   "orcid": "0009-0002-0684-8320"
+  }
+ ],
+ "keywords": [
+  "jugaad",
+  "frugal engineering",
+  "parametric model",
+  "simulation",
+  "CAD",
+  "CNC",
+  "foundry",
+  "robotics",
+  "Humanesque",
+  "Zistgah"
+ ],
+ "programming_language": "JavaScript",
+ "repository": "https://github.com/zistgah/jug2gen"
+}
