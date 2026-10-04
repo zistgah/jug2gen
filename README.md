@@ -1,5 +1,7 @@
 # Jugaad to Genesis
 
+DOI: [10.5281/zenodo.23139760](https://doi.org/10.5281/zenodo.23139760)
+
 © 1993–2026 Abhishek Choudhary. All rights reserved. AyeAI.
 
 Parametric simulation and exchange laboratory for the Jugaad-to-Genesis mechanical model.
