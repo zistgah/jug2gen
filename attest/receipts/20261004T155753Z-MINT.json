@@ -1,0 +1,19 @@
+{
+    "_type": "https://in-toto.io/Statement/v1",
+    "predicateType": "https://project-ilm.org/attestations/candor/v1",
+    "subject": [
+        {
+            "name": "zistgah/jug2gen",
+            "digest": {
+                "gitCommit": "fd563b42ecee3c0a41b26e750d39e3020526509b"
+            }
+        }
+    ],
+    "predicate": {
+        "action": "MINT",
+        "reason": "seed",
+        "utc": "20261004T155753Z",
+        "host": "ilm01-lin",
+        "note": "10.5281/zenodo.23139760"
+    }
+}
